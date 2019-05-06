@@ -1,0 +1,24 @@
+---
+title: "Time Series Chapter 1"
+output: html_notebook
+---
+
+
+
+```{r}
+#Autoregression plot
+w=rnorm(550)
+x=filter(w,filter = c(1,-.9),method = "recursive")[-(1:50)]
+plot.ts(x,main="autoregression")
+```
+
+```{r}
+#Random walk
+
+
+set.seed(124)
+w=rnorm(200); x=cumsum(w)
+wd=w+.2; xd=cumsum(wd)
+plot.ts(xd,ylim=c(-5,55),main="random walk",ylab="")
+lines(x,col=4); abline(h=0,col=4,lty=2);  abline(a=0, b=.2, lty=2)
+```
